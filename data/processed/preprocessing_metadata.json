@@ -1,0 +1,61 @@
+{
+    "clustering_feature_cols": [
+        "log_revenue",
+        "log_loan_amnt",
+        "fico_n",
+        "dti_capped",
+        "emp_length_years",
+        "experience_c",
+        "home_MORTGAGE",
+        "home_OTHER",
+        "home_OWN",
+        "home_RENT",
+        "purpose_car",
+        "purpose_credit_card",
+        "purpose_debt_consolidation",
+        "purpose_educational",
+        "purpose_home_improvement",
+        "purpose_house",
+        "purpose_major_purchase",
+        "purpose_medical",
+        "purpose_moving",
+        "purpose_other",
+        "purpose_renewable_energy",
+        "purpose_small_business",
+        "purpose_vacation",
+        "purpose_wedding"
+    ],
+    "feature_cols_numerical": [
+        "log_revenue",
+        "log_loan_amnt",
+        "fico_n",
+        "dti_capped",
+        "emp_length_years",
+        "experience_c"
+    ],
+    "home_cols": [
+        "home_MORTGAGE",
+        "home_OTHER",
+        "home_OWN",
+        "home_RENT"
+    ],
+    "purpose_cols": [
+        "purpose_car",
+        "purpose_credit_card",
+        "purpose_debt_consolidation",
+        "purpose_educational",
+        "purpose_home_improvement",
+        "purpose_house",
+        "purpose_major_purchase",
+        "purpose_medical",
+        "purpose_moving",
+        "purpose_other",
+        "purpose_renewable_energy",
+        "purpose_small_business",
+        "purpose_vacation",
+        "purpose_wedding"
+    ],
+    "sample_size": 50000,
+    "total_records": 1347681,
+    "random_state": 42
+}

@@ -1,0 +1,10 @@
+{
+    "total_features": 24,
+    "pc1_variance": 0.09963367876522612,
+    "pc2_variance": 0.0762568644559826,
+    "pc3_variance": 0.05853152271113004,
+    "cum_variance_5_components": 0.3403807974318838,
+    "components_for_80_pct": 16,
+    "tsne_samples": 10000,
+    "umap_samples": 15000
+}
