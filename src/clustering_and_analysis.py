@@ -268,15 +268,17 @@ def run_clustering_and_analysis():
 
     # Plot Default Rate Across Clusters
     plt.figure(figsize=(10, 6))
+    cluster_color_palette = ['#E11D48', '#F59E0B', '#8B5CF6', '#059669']
     bars = plt.bar(
         cluster_stats['kmeans_cluster'].astype(str),
         cluster_stats['default_rate_pct'],
-        color=['#2ecc71', '#3498db', '#f39c12', '#e74c3c'],
-        edgecolor='black',
-        alpha=0.85
+        color=cluster_color_palette,
+        edgecolor='#0f172a',
+        linewidth=1.2,
+        alpha=0.9
     )
     plt.axhline(y=df_sample['Default'].mean() * 100, color='black', linestyle='--', linewidth=2, label=f'Portfolio Baseline ({df_sample["Default"].mean()*100:.1f}%)')
-    plt.title('Historical Default Rate by Discovered Borrower Segment', fontsize=14, fontweight='bold')
+    plt.title('Historical Default Rate by Discovered Borrower Segment (Distinct Palette)', fontsize=14, fontweight='bold')
     plt.xlabel('Cluster ID', fontweight='bold')
     plt.ylabel('Historical Default Rate (%)', fontweight='bold')
     plt.ylim(0, max(cluster_stats['default_rate_pct']) * 1.25)
@@ -293,25 +295,25 @@ def run_clustering_and_analysis():
     plt.close()
     print(f"Saved: {risk_plot_path}")
 
-    # Plot Cluster Feature Comparison Profiles
+    # Plot Cluster Feature Comparison Profiles with Distinguishable Colors
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
-    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_income', ax=axes[0, 0], palette='viridis')
+    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_income', ax=axes[0, 0], palette=cluster_color_palette, hue='kmeans_cluster', legend=False)
     axes[0, 0].set_title('Mean Annual Income by Segment ($)', fontweight='bold')
     axes[0, 0].set_xlabel('Cluster ID')
     axes[0, 0].set_ylabel('Annual Income ($)')
 
-    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_fico', ax=axes[0, 1], palette='magma')
+    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_fico', ax=axes[0, 1], palette=cluster_color_palette, hue='kmeans_cluster', legend=False)
     axes[0, 1].set_title('Mean FICO Credit Score by Segment', fontweight='bold')
     axes[0, 1].set_xlabel('Cluster ID')
     axes[0, 1].set_ylabel('FICO Score')
     axes[0, 1].set_ylim(640, 750)
 
-    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_loan', ax=axes[1, 0], palette='Blues_d')
+    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_loan', ax=axes[1, 0], palette=cluster_color_palette, hue='kmeans_cluster', legend=False)
     axes[1, 0].set_title('Mean Loan Amount by Segment ($)', fontweight='bold')
     axes[1, 0].set_xlabel('Cluster ID')
     axes[1, 0].set_ylabel('Loan Amount ($)')
 
-    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_dti', ax=axes[1, 1], palette='Reds_d')
+    sns.barplot(data=cluster_stats, x='kmeans_cluster', y='mean_dti', ax=axes[1, 1], palette=cluster_color_palette, hue='kmeans_cluster', legend=False)
     axes[1, 1].set_title('Mean Debt-to-Income (DTI) by Segment (%)', fontweight='bold')
     axes[1, 1].set_xlabel('Cluster ID')
     axes[1, 1].set_ylabel('DTI (%)')
